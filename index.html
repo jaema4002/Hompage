@@ -18,6 +18,37 @@
             color: #ffffff;
         }
 
+        /* FIXED LOGO STYLES (수정됨: 메뉴 아래, 우측에 위치) */
+        .fixed-logo {
+            position: fixed;
+            /* 헤더(약 80px 높이) 아래로 이동하여 본문 영역에 고정 */
+            top: 6rem; /* 6rem = 96px */
+            right: 5%;  
+            z-index: 1001; 
+            transition: all 0.3s ease;
+        }
+        
+        .fixed-logo img {
+            /* 크기 3배 확대: 60px -> 180px */
+            width: 140px; 
+            height: auto;
+            border-radius: 8px;
+            /* 로고 크기에 맞게 그림자 효과 강화 */
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.6);
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .fixed-logo {
+                top: 4rem; /* 모바일에서 위치 조정 */
+                right: 5%;
+            }
+            .fixed-logo img {
+                width: 120px; /* 모바일에서 크기 조정 (약 2배) */
+            }
+        }
+        /* END FIXED LOGO STYLES */
+
         /* 헤더 네비게이션 */
         header {
             position: fixed;
@@ -43,7 +74,7 @@
             max-width: 1400px;
             margin: 0 auto;
         }
-
+        
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
@@ -57,6 +88,8 @@
             display: flex;
             gap: 2.5rem;
             list-style: none;
+            /* 고정 로고가 이제 헤더 밖에 있으므로 마진 제거 */
+            margin-right: 0; 
         }
 
         .nav-menu a {
@@ -87,6 +120,8 @@
             flex-direction: column;
             gap: 5px;
             cursor: pointer;
+            position: relative; 
+            z-index: 1002;
         }
 
         .mobile-toggle span {
@@ -349,6 +384,7 @@
                 gap: 1.5rem;
                 transition: right 0.3s ease;
                 border-top: 1px solid rgba(255, 255, 255, 0.1);
+                margin-right: 0; 
             }
 
             .nav-menu.active {
@@ -386,6 +422,16 @@
     </style>
 </head>
 <body>
+    
+    <!-- 우측 상단 고정 로고 (위치와 크기가 수정됨) -->
+    <div class="fixed-logo">
+        <img
+            src="https://github.com/jaema4002/Hompage/blob/main/logo.png?raw=true"
+            alt="사이트 로고"
+            onerror="this.onerror=null; this.src='https://placehold.co/180x180/667eea/ffffff?text=LOGO';"
+        >
+    </div>
+
     <header id="header">
         <nav>
             <div class="logo">DTMS</div>
